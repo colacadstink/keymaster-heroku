@@ -47,7 +47,7 @@ exports.generateCode = async (service) => {
     if(!hook.ok) {
       console.error(await hook.text());
     } else {
-      console.debug(await hook.json());
+      console.debug(await hook.text());
     }
     console.debug('Done!');
     return {
