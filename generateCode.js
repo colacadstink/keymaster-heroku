@@ -1,6 +1,6 @@
 const twoFactor = require("node-2fa");
 
-export const generateCode = async (service) => {
+exports.generateCode = async (service) => {
   try {
     // Pull the service name
     if(!service) {
