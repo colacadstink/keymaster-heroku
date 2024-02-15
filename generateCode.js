@@ -35,12 +35,17 @@ exports.generateCode = async (service) => {
     const webhookUrl = process.env[webhookUrlKey];
 
     // Send it
-    await fetch(webhookUrl, {
+    const hook = await fetch(webhookUrl, {
       method: 'POST',
       body: JSON.stringify({
         content: `The 2FA code for ${service.toLowerCase()} is ${tokenObj.token}.`
       })
     });
+    if(!hook.ok) {
+      console.error(await hook.text());
+    } else {
+      console.debug(await hook.json());
+    }
     console.debug('Done!');
     return {
       statusCode: 204
