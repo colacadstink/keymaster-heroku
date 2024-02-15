@@ -37,9 +37,12 @@ exports.generateCode = async (service) => {
     // Send it
     const hook = await fetch(webhookUrl, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        content: `The 2FA code for ${service.toLowerCase()} is ${tokenObj.token}.`
-      })
+        content: `The 2FA code for ${service.toLowerCase()} is ${tokenObj.token}.`,
+      }),
     });
     if(!hook.ok) {
       console.error(await hook.text());
