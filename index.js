@@ -8,5 +8,8 @@ server.get('/key/:serviceName', async (req, res) => {
   res.status(result.statusCode);
   res.send(result.body ?? '');
 });
+server.get('/', (_, res) => {
+  res.send('Nothing to see here');
+})
 
 server.listen(process.env['PORT'] || 8080);
